@@ -4,10 +4,10 @@
     "slug": "radio",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/fm-faro-90-5-logo.jpg",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/fm-faro-90-5-logo.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,13 +18,16 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.radio.ccdemf",
+      "versionCode": 1,
+      "permissions": ["MEDIA_CONTENT_CONTROL", "FOREGROUND_SERVICE"],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/fm-faro-90-5-logo.jpg",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/fm-faro-90-5-logo.jpg"
     }
   }
 }
