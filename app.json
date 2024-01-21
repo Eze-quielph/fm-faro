@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/fm-faro-90-5-logo.jpg",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ffff90"
     },
     "assetBundlePatterns": [
       "**/*"

@@ -1,18 +1,38 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
+import { Linking } from "react-native";
 
 export const RedesButtons: React.FC = () => {
+   const openLink = async (url: string) => {
+     try {
+       await Linking.openURL(url);
+     } catch (error) {
+       console.error("Error al abrir el enlace:", error);
+     }
+   };
   return (
     <View style={styles.container}>
-      <Button style={styles.button} icon="facebook">
-        Facebook
+      <Button
+        style={styles.button}
+        icon="facebook"
+        onPress={() => openLink("https://www.facebook.com/fmfaro905")}
+      >
+        <Text style={styles.buttonText}>Facebook</Text>
       </Button>
-      <Button style={styles.button} icon="whatsapp">
-        Whatsapp
+      <Button
+        style={styles.button}
+        icon="whatsapp"
+        onPress={() => openLink("https://wa.me/1155691228")}
+      >
+        <Text style={styles.buttonText}>Whatsapp</Text>
       </Button>
-      <Button style={styles.button} icon="instagram">
-        Instagram
+      <Button
+        style={styles.button}
+        icon="instagram"
+        onPress={() => openLink("https://www.instagram.com/fmfaro905")}
+      >
+        <Text style={styles.buttonText}>Instagram</Text>
       </Button>
     </View>
   );
@@ -24,21 +44,20 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   button: {
-    backgroundColor: "transparent",
+    backgroundColor: "#007",
     borderWidth: 0.6,
-    borderLeftWidth: 0.6,
-    borderTopWidth: 0.6,
-    borderRightWidth: 0.6,
-    borderBottomWidth: 0.6,
     borderColor: "#001",
     alignItems: "center",
     justifyContent: "center",
-    width:120,
-    height: 40,
+    paddingVertical: 5,
+    borderRadius: 30,
     margin: 5,
-
+    height: 50,
+    width: 120,
+    elevation: 15, 
   },
   buttonText: {
     color: "#fff",
+    fontSize: 14,
   },
 });

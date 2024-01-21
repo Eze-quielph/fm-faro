@@ -2,10 +2,12 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, LogBox } from "react-native";
 import Reproductor from "./src/components/player/Player";
 import { RedesButtons } from "./src/components/socials/Social";
-import { Avatar, Text } from "react-native-paper";
+
 import { SafeAreaView } from "react-native-safe-area-context";
 import CarouselComponent from "./src/components/carrousel/CarrouselComponent";
-import { LinearGradient } from "expo-linear-gradient";
+
+import { Header } from "./src/components/Header/Header";
+import { Presentation } from "./src/components/presentation/Presentation";
 
 LogBox.ignoreLogs(["new NativeEventEmitter"]);
 LogBox.ignoreAllLogs();
@@ -13,45 +15,32 @@ LogBox.ignoreAllLogs();
 export default function App() {
   const cardsData = [
     {
-      image: "url_imagen_1",
-      title: "Título 1",
-      description: "Descripción 1",
+      image: "",
+      title: "Escrito Esta",
+      description: "Periódico de la Iglesia",
     },
     {
-      image: "url_imagen_2",
-      title: "Título 2",
-      description: "Descripción 2",
+      image: "",
+      title: "Turing Factory",
+      description: "Desarrollo de software a medida y productos digitales",
+    },
+    {
+      image: "",
+      title: "CCDEMF",
+      description: "Iglesia",
+    },
+    {
+      image: "",
+      title: "FM FARO 90.5",
+      description: "Radio",
     },
   ];
 
   return (
-    <SafeAreaView style={{ flex: 1, alignContent: "center" }}>
+    <SafeAreaView style={styles.container }>
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Text variant="headlineLarge" style={styles.headerText}>
-            FM FARO{" "}
-            <Text variant="headlineMedium" style={{ color: "#001" }}>
-              90.5
-            </Text>
-          </Text>
-        </View>
-
-        <View style={styles.containerImage}>
-          <View style={styles.textContainer}>
-            <Text variant="displayLarge" style={styles.title}>
-              FM FARO
-            </Text>
-            <Text variant="displayMedium" style={styles.titleSeconds}>
-              90.5
-            </Text>
-          </View>
-          <View style={styles.logoContainer}>
-            <Avatar.Image
-              size={190}
-              source={require("./assets/fm-faro-90-5-logo.jpg")}
-            />
-          </View>
-        </View>
+        <Header/>
+        <Presentation/>
         <View style={styles.containerPlayer}>
           <Reproductor />
         </View>
@@ -80,66 +69,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop: 20,
+    backgroundColor: "#F1F1F1",
   },
-  ballContainer: {
-    width: "100%",
-    height: 200,
-    position: "relative",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  gradient: {
-    ...StyleSheet.absoluteFillObject,
-    borderRadius: 15,
-  },
-  header: {
-    flex: 0.6,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  headerText: {
-    fontSize: 24,
-    color: "#00090",
-    borderStyle: "solid",
-    borderBottomWidth: 1,
-    borderBottomColor: "#00190",
-  },
-  containerImage: {
-    flex: 0.5,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 100,
-  },
-  containerPlayer: {
-    flex: 0.4,
-    alignItems: "center",
-    justifyContent: "center",
-    borderBottomColor: "#001",
-    borderBottomWidth: 1,
-  },
-  logoContainer: {
-    marginRight: 10,
-  },
-  textContainer: {
-    flexDirection: "column",
-    alignItems: "flex-start",
-  },
-  title: {
-    fontSize: 42,
-    fontWeight: "bold",
-    color: "#001",
-  },
-  titleSeconds: {
-    fontSize: 36,
-    color: "#001",
-    marginLeft: 100,
-    borderBottomColor: "#001",
-    borderRadius: 10,
-    borderStyle: "solid",
-    borderBottomWidth: 1,
-    paddingBottom: 5,
-  },
+
   bottomContainer: {
     flex: 1,
     alignItems: "center",
@@ -150,7 +85,7 @@ const styles = StyleSheet.create({
     right: 0,
     marginBottom: 5,
     backgroundColor: "transparent",
-    paddingVertical: 20, // Ajusta según sea necesario
+    paddingVertical: 20,
     borderBlockColor: "#001",
     borderStyle: "solid",
     borderTopWidth: 1,
@@ -159,21 +94,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderRadius: 30,
   },
-  image: {
-    width: 200,
-    height: 200,
-    borderRadius: 10,
-    marginRight: 15,
+  containerPlayer: {
+    flex: 0.4,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
-
-/*
-Use Image expo sdk 50
-    <Image
-            style={styles.image}
-            source={require("./assets/fm-faro-90-5-logo.jpg")}
-            placeholder={""}
-            contentFit="cover"
-            transition={1000}
-          />
-*/

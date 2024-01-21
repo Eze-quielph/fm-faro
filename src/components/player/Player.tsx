@@ -1,10 +1,12 @@
 import React, { useState, useRef } from "react";
-import { LogBox, View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { LogBox, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { PlayerInstance, Player } from "../../services/audio.services";
 import { Button } from "react-native-paper";
 
-LogBox.ignoreLogs(["new NativeEventEmitter"]); // Ignorar notificaciones de registro por mensaje
-LogBox.ignoreAllLogs(); // Ignorar todas las notificaciones de registro
+LogBox.ignoreLogs(["new NativeEventEmitter"]);
+LogBox.ignoreAllLogs();
+
+type OnPress = () => Promise<void>;
 
 export const Reproductor: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -19,7 +21,7 @@ export const Reproductor: React.FC = () => {
 
   const playAudio = async () => {
     try {
-      initializeAudioPlayer(); // Cargar el sonido solo si no se ha cargado antes
+      initializeAudioPlayer();
       await audioPlayer.current?.play();
       setIsPlaying(true);
     } catch (error) {
@@ -47,25 +49,25 @@ export const Reproductor: React.FC = () => {
     }
   };
 
+  const renderButton = (label: string, onPress: OnPress) => (
+    <TouchableOpacity
+      style={styles.buttonContainer}
+      onPress={onPress}
+      activeOpacity={0.7} // Opacidad al presionar
+    >
+      <Text style={styles.buttonText}>{label}</Text>
+    </TouchableOpacity>
+  );
+
   return (
-    <View>
+    <View style={styles.container}>
       {isPlaying ? (
-        <View style={styles.container}>
-          <View style={styles.button}>
-            <Button style={styles.button} icon="pause" onPress={pauseAudio}>
-              <Text style={styles.buttonText}>Pause</Text>
-            </Button>
-            <Button style={styles.button} icon="stop" onPress={stopAudio}>
-              <Text style={styles.buttonText}>Stop</Text>
-            </Button>
-          </View>
+        <View style={styles.buttonsContainer}>
+          {renderButton("Pause", pauseAudio)}
+          {renderButton("Stop", stopAudio)}
         </View>
       ) : (
-        <View style={styles.button}>
-          <Button icon="play" onPress={playAudio}>
-            <Text style={styles.buttonText}>Play</Text>
-          </Button>
-        </View>
+        renderButton("Play", playAudio)
       )}
     </View>
   );
@@ -73,29 +75,31 @@ export const Reproductor: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 15, 
+  },
+  buttonsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  button: {
-    backgroundColor: "transparent",
-    borderWidth: 0.6,
-    borderLeftWidth: 0.6,
-    borderTopWidth: 0.6,
-    borderRightWidth: 0.6,
-    borderBottomWidth: 0.6,
-    borderColor: "#001",
+  buttonContainer: {
+    backgroundColor: "#007",
+    paddingVertical: 5,
+    paddingHorizontal: 5,
+    borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 30,
-    width: 120,
-    height: 50,
+    alignContent: "center",
     margin: 5,
-    padding: 5,
+    height: 50,
+    width: 100,
   },
   buttonText: {
-    color: "#001",
+    color: "#fff",
     fontFamily: "Roboto",
-    fontSize: 14,
+    fontSize: 16,
   },
 });
 

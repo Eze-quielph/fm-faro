@@ -21,27 +21,29 @@ const Card: React.FC<CardProps> = ({ image, title, description }) => {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: "#F1F1F1",
     borderRadius: 10,
     margin: 10,
-    overflow: 'hidden',
-    elevation: 3,
+    overflow: "hidden",
+    elevation: 4,
   },
   cardImage: {
-    width: '100%',
+    width: "100%",
     height: 150,
   },
   cardTextContainer: {
     padding: 10,
+    color: "#007",
   },
   cardTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 5,
+    color: "#007",
   },
   cardDescription: {
     fontSize: 14,
-    color: '#555',
+    color: "#007",
   },
 });
 
