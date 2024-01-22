@@ -20,7 +20,10 @@
     "android": {
       "package": "com.radio.ccdemf",
       "versionCode": 1,
-      "permissions": ["MEDIA_CONTENT_CONTROL", "FOREGROUND_SERVICE"],
+      "permissions": [
+        "MEDIA_CONTENT_CONTROL",
+        "FOREGROUND_SERVICE"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/fm-faro-90-5-logo.jpg",
         "backgroundColor": "#ffffff"
@@ -28,6 +31,11 @@
     },
     "web": {
       "favicon": "./assets/fm-faro-90-5-logo.jpg"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cff2e7d5-8146-4bcd-9c9c-34e3a126c052"
+      }
     }
   }
 }
