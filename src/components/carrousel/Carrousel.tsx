@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 interface CardProps {
-  image: string;
+  image: string | number;
   title: string;
   description: string;
 }
@@ -10,7 +10,10 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ image, title, description }) => {
   return (
     <View style={styles.cardContainer}>
-      <Image source={{ uri: image }} style={styles.cardImage} />
+      <Image
+        source={typeof image === "number" ? image : { uri: image as string }}
+        style={styles.cardImage}
+      />
       <View style={styles.cardTextContainer}>
         <Text style={styles.cardTitle}>{title}</Text>
         <Text style={styles.cardDescription}>{description}</Text>
@@ -23,20 +26,23 @@ const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: "#F1F1F1",
     borderRadius: 10,
-    margin: 10,
+    margin: 5,
     overflow: "hidden",
     elevation: 4,
+    width: '100%',
+    height: '100%',
   },
   cardImage: {
+    paddingRight:5,
     width: "100%",
-    height: 150,
+    height: "90%",
   },
   cardTextContainer: {
-    padding: 10,
+    padding: 5,
     color: "#007",
   },
   cardTitle: {
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: "bold",
     marginBottom: 5,
     color: "#007",

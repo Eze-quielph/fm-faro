@@ -53,7 +53,7 @@ export const Reproductor: React.FC = () => {
     <TouchableOpacity
       style={styles.buttonContainer}
       onPress={onPress}
-      activeOpacity={0.7} // Opacidad al presionar
+      activeOpacity={0.7} 
     >
       <Text style={styles.buttonText}>{label}</Text>
     </TouchableOpacity>
@@ -64,7 +64,6 @@ export const Reproductor: React.FC = () => {
       {isPlaying ? (
         <View style={styles.buttonsContainer}>
           {renderButton("Pause", pauseAudio)}
-          {renderButton("Stop", stopAudio)}
         </View>
       ) : (
         renderButton("Play", playAudio)
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    elevation: 15, 
+    elevation: 15,
   },
   buttonsContainer: {
     flexDirection: "row",

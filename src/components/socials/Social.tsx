@@ -42,6 +42,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center", // Alinea los botones verticalmente en el centro
+    height: 5,
+    paddingHorizontal: 10, // Agrega un espaciado horizontal
   },
   button: {
     backgroundColor: "#007",
@@ -54,7 +57,7 @@ const styles = StyleSheet.create({
     margin: 5,
     height: 50,
     width: 120,
-    elevation: 15, 
+    elevation: 15,
   },
   buttonText: {
     color: "#fff",

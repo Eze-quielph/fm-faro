@@ -28,12 +28,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: 50, // Ajusta según sea necesario
+    marginLeft: 50, 
     marginBottom: 100,
   },
   logoContainer: {
     marginRight: 10,
-    marginLeft: 10, // Ajusta según sea necesario para alinear con el texto
+    marginLeft: 10, 
     borderRadius: 100,
     borderStyle: "solid",
     borderWidth: 1,

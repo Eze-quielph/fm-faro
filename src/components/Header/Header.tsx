@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#007",
   },
   headerText2: {
-    fontSize: 11,
+    fontSize: 10,
     color: "#007",
   },
 });
