@@ -18,22 +18,18 @@ export default function App() {
     {
       image: require("./assets/escrito-esta-adds.png"),
       title: "Escrito Esta",
-      description: " ",
     },
     {
       image: require("./assets/turing-factory-adds.jpg"),
       title: "Turing Factory",
-      description: "",
     },
     {
       image: require("./assets/ccdemf-adds.jpeg"),
       title: "CCDEMF",
-      description: "",
     },
     {
       image: "",
       title: "FM FARO 90.5",
-      description: "",
     },
   ];
 

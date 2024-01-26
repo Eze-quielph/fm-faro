@@ -4,10 +4,9 @@ import { View, Text, StyleSheet, Image } from "react-native";
 interface CardProps {
   image: string | number;
   title: string;
-  description: string;
 }
 
-const Card: React.FC<CardProps> = ({ image, title, description }) => {
+const Card: React.FC<CardProps> = ({ image, title }) => {
   return (
     <View style={styles.cardContainer}>
       <Image
@@ -16,7 +15,6 @@ const Card: React.FC<CardProps> = ({ image, title, description }) => {
       />
       <View style={styles.cardTextContainer}>
         <Text style={styles.cardTitle}>{title}</Text>
-        <Text style={styles.cardDescription}>{description}</Text>
       </View>
     </View>
   );

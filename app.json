@@ -2,7 +2,7 @@
   "expo": {
     "name": "radio",
     "slug": "radio",
-    "version": "1.0.0",
+    "version": "3.0.0",
     "orientation": "portrait",
     "icon": "./assets/fm-faro-90-5-logo.jpg",
     "userInterfaceStyle": "light",
@@ -34,7 +34,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "cff2e7d5-8146-4bcd-9c9c-34e3a126c052"
+        "projectId": "bdf11a35-8290-47ed-9154-6cf112d66cec"
       }
     }
   }
