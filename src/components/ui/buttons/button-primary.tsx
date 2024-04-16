@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     elevation: 15,
     shadowColor: "#300000",
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.15,
     shadowRadius: 15,
     display:"flex",
     alignContent: "center",
