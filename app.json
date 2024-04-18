@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/fm-faro-90-5-logo.jpg",
     "userInterfaceStyle": "light",
+    "scheme": "multimedia-ccdemf",
     "splash": {
       "image": "./assets/fm-faro-90-5-logo.jpg",
       "resizeMode": "contain",
@@ -36,6 +37,9 @@
       "eas": {
         "projectId": "bdf11a35-8290-47ed-9154-6cf112d66cec"
       }
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
