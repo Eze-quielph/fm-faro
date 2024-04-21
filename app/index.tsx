@@ -8,6 +8,7 @@ import { Title } from "../src/components/ui/text/title";
 import { Card_Home } from "../src/components/ui/card/card_home";
 import { Input_Primary } from "../src/components/ui/input/input_primary";
 import { Header } from "../src/components/ui/header/header";
+import { Navigation } from "../src/components/ui/navigation/Navigation";
 
 // System Desing the Product
 export default function Page() {
@@ -27,6 +28,7 @@ export default function Page() {
           <Input_Primary children="Nombre" onChangeText={() => console.log("Ejecute")
           } value="1" />
           <Header />
+          <Navigation/>
         </View>
       </View>
     </SafeAreaView>
