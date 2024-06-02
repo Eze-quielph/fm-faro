@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
 } from "react-native";
+import {Link} from 'expo-router';
 
 interface Props {
   /**
@@ -18,14 +19,21 @@ interface Props {
    */
   children?: string;
   theme?: boolean;
+  link?: string
 }
 
-export function ButtonPrimary({ handlePress, children, theme }: Props) {
+export function ButtonPrimary({handlePress, children, theme, link}: Props) {
   return (
     <Pressable onPress={handlePress} style={styles.button_primary_dark}>
-      <Text style={styles.text_button_dark}>
-        {children ? children : "button"}
-      </Text>
+      {link
+          ? <Link href={link} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
+              <Text style={styles.text_button_dark}>
+                {children ? children : "button"}
+              </Text>
+            </Link>
+          : <Text style={styles.text_button_dark}>
+               {children ? children : "button"}
+            </Text>}
     </Pressable>
   );
 }
@@ -61,7 +69,8 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     display:"flex",
     alignContent: "center",
-    textAlign: 'center'
+    textAlign: 'center',
+    justifyContent: 'center'
   },
   text_button_ligth: {
     color: "#535353",

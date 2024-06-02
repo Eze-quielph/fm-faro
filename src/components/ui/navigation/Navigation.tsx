@@ -1,43 +1,66 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
+import {useNavigation, useRootNavigation } from "expo-router";
 import { IcoNavigation } from "./IconNavigation";
 
 interface Props {
   children: string;
+  link: string,
   icon: unknown;
   status: boolean;
 }
 
-const icons: Props[] = [
-  {
-    children: "Inicio",
-    icon: require('../../../../assets/home.png'),
-    status: true,
-  },
-  {
-    children: "Sobre Nosotros",
-    icon: require('../../../../assets/about.png'),
-    status: true,
-  },
-  {
-    children: "Contacto",
-    icon: require('../../../../assets/contact.png'),
-    status: true,
-  },
-];
-
 export function Navigation() {
+  const navigation = useRootNavigation();
+  const router = navigation?.getCurrentRoute();
+
+  const [icons, setIcons] = React.useState<Props[]>([]);
+
+  React.useEffect(() => {
+    const updateIcons = () => {
+      const updatedIcons = [
+        {
+          children: "Inicio",
+          link: 'Home',
+          icon: require('../../../../assets/home.png'),
+          status: getPatchStatus(router, 'Home'),
+        },
+        {
+          children: "Sobre Nosotros",
+          link: 'About',
+          icon: require('../../../../assets/about.png'),
+          status: getPatchStatus(router, 'About'),
+        },
+        {
+          children: "Contacto",
+          link: 'Contact',
+          icon: require('../../../../assets/contact.png'),
+          status: getPatchStatus(router, 'Contact'),
+        },
+      ];
+      setIcons(updatedIcons);
+    };
+
+    updateIcons();
+  }, [router]);
+
+  const getPatchStatus = (directions: any, route: string): boolean => {
+    const key: string = directions?.name.split('/')[0] || '';
+    return key === route;
+  };
+
   return (
-    <View style={styles.container}>
-      {icons.length > 0 &&
-        icons.map(({ children, icon, status }: Props) => (
-          <View style={styles.iconContainer} key={children}>
-            <IcoNavigation children={children} icon={icon} status={status} />
-          </View>
-        ))}
-    </View>
+      <View style={styles.container}>
+        {icons.length > 0 &&
+            icons.map(({ children, icon, status, link }: Props) => (
+                <View style={styles.iconContainer} key={children}>
+                  <IcoNavigation link={link} children={children} icon={icon} status={status} />
+                </View>
+            ))}
+      </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -55,10 +78,10 @@ const styles = StyleSheet.create({
     elevation: 3,
     shadowColor: "#4D4D4D",
     shadowOpacity: 0.25,
-    shadowRadius: 15,
+    shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
   },
   iconContainer: {
-    paddingHorizontal: 10, 
+    paddingHorizontal: 5,
   },
 });

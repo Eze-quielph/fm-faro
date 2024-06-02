@@ -1,36 +1,79 @@
-import { View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import { setting } from "../src/Style/Setting";
-import { ButtonPrimary } from "../src/components/ui/buttons/button-primary";
-import { Title } from "../src/components/ui/text/title";
-import { Card_Home } from "../src/components/ui/card/card_home";
-import { Input_Primary } from "../src/components/ui/input/input_primary";
-import { Header } from "../src/components/ui/header/header";
-import { Navigation } from "../src/components/ui/navigation/Navigation";
+import {ScrollView, StyleSheet, View} from "react-native";
+import {Header} from '../src/components/ui/header/header'
+import { Image } from 'expo-image';
+import {Card_Home} from "../src/components/ui/card/card_home";
+import {ButtonPrimary} from "../src/components/ui/buttons/button-primary";
 
-// System Desing the Product
 export default function Page() {
-  const [counter, setCounter] = useState<number>(0);
 
-  const press = () => {
-    setCounter(counter + 1);
-  };
   return (
-    <SafeAreaView>
-      <View style={setting.background_dark}>
-        <StatusBar />
-        <View style={{ marginTop: 50, alignContent: 'center', alignItems: 'center' }}>
-          <Title children="Titulo" />
-          <ButtonPrimary children="Comenzar" handlePress={press} />
-          <Card_Home />
-          <Input_Primary children="Nombre" onChangeText={() => console.log("Ejecute")
-          } value="1" />
-          <Header />
-          <Navigation/>
+
+        <View style={styles.container} >
+          <ScrollView >
+          <View style={styles.headerContainer}>
+            <Header />
+          </View>
+          <View style={styles.imageContainer}>
+            <Image style={styles.image} source={require('../assets/welcome.png')} />
+          </View>
+          <View style={styles.CardContainer}>
+            <Card_Home/>
+          </View>
+          <View style={styles.buttonContainer}>
+            <ButtonPrimary handlePress={()=> console.info('')} link='/Home' children={'Bienvenido'} />
+          </View>
+          </ScrollView>
         </View>
-      </View>
-    </SafeAreaView>
+
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    backgroundColor: "#1D1B20",
+    width: "100%",
+    height: "100%",
+    alignItems: 'center',
+    alignContent: 'center',
+  },
+  headerContainer: {
+    display: "flex",
+    width: 269,
+    height: 78,
+    marginTop: 15
+  },
+  imageContainer: {
+    display: "flex",
+    alignItems: "center",
+    alignContent:'center',
+    marginBottom:32,
+    marginTop:37,
+    maxWidth:328,
+    maxHeight:232,
+    height: 'auto',
+      width: 'auto'
+  },
+  image: {
+   objectFit: 'cover',
+    width: "100%",
+    height: "100%",
+  },
+  CardContainer: {
+      maxWidth:'auto',
+      maxHeight:'auto',
+    minWidth: 325,
+    minHeight: 279,
+    display: 'flex',
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: "center",
+    marginBottom: 32
+  },
+  buttonContainer:{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 5
+  }
+})

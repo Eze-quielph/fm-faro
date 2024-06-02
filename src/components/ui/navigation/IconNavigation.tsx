@@ -1,20 +1,29 @@
-import {View, Image, Text, StyleSheet} from 'react-native';
+import {View, Image, Text, StyleSheet, Pressable} from 'react-native';
+import {useRouter} from "expo-router";
 
 interface Props {
     children: string;
     icon: any,
-    status: boolean
+    status: boolean,
+    link: string
 }
 
-export function IcoNavigation({children, icon, status}: Props){
+export function IcoNavigation({children, icon, status, link}: Props){
+    const router = useRouter();
 
+    const handlePress = ()=> {
+        router.replace(link)
+    }
     return (
-        <View style={styles.container}>
-            <View style={styles.image_container}>
-                <Image source={icon} style={[styles.image, { tintColor: status ? "white" : "gray" }]}/>
-            </View>
-            <Text style={styles.text}>{children}</Text>
-        </View>
+
+            <Pressable style={styles.container} onPress={handlePress}>
+                <View style={styles.image_container}>
+                    <Image source={icon} style={[styles.image, { tintColor: status ? "white" : "gray" }]}/>
+                </View>
+                <Text style={styles.text}>{children}</Text>
+
+            </Pressable>
+
     )
 }
 

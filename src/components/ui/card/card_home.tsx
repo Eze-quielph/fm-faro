@@ -23,9 +23,12 @@ export function Card_Home() {
 
 const styles = StyleSheet.create({
   container: {
-    marginRight: 41,
     justifyContent: "center",
     alignItems: "center",
+    width: 'auto',
+    height:'auto',
+    minHeight:210,
+    mixWidth:280
   },
   card: {
     backgroundColor: "#3B3645",
